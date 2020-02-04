@@ -1,21 +1,26 @@
 # Cart
 
-**TODO: Add description**
+Equal Experts Tech Interview Solution
+Version number: e5ce2b40e077ee165c0a6b7598317089354c8922
 
-## Installation
+## Requirements
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `cart` to your list of dependencies in `mix.exs`:
+Elixir (https://elixir-lang.org/install.html)
 
-```elixir
-def deps do
-  [
-    {:cart, "~> 0.1.0"}
-  ]
-end
+## Instructions
+
+Option 1:
+
+Run the following build script
+```
+chmod +x build.sh
+. build.sh
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/cart](https://hexdocs.pm/cart).
+which should execute the following mix commands (Options 2):
 
+```
+mix deps.get
+mix compile
+mix test
+```

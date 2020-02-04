@@ -13,17 +13,14 @@ defmodule CartTest do
     actual =
       cart
       |> Cart.add(product, 5)
-      |> IO.inspect()
 
     num_products =
-      actual.products
-      |> Enum.count()
+      actual
+      |> Cart.get_num_products()
 
     total_cost =
-      actual.products
-      |> Enum.map(& &1.price)
-      |> Enum.sum()
-      |> Float.round(2)
+      actual
+      |> Cart.get_total_cost()
 
     assert num_products == 5
     assert total_cost == 199.95
@@ -43,14 +40,12 @@ defmodule CartTest do
       |> Cart.add(product, 3)
 
     num_products =
-      actual.products
-      |> Enum.count()
+      actual
+      |> Cart.get_num_products()
 
     total_cost =
-      actual.products
-      |> Enum.map(& &1.price)
-      |> Enum.sum()
-      |> Float.round(2)
+      actual
+      |> Cart.get_total_cost()
 
     assert num_products == 8
     assert total_cost == 319.92
@@ -71,29 +66,20 @@ defmodule CartTest do
       |> Cart.add(axe, 2)
 
     num_dove =
-      actual.products
-      |> Enum.filter(fn p -> p.name == "Dove" end)
-      |> Enum.count()
+      actual
+      |> Cart.get_num_products("Dove")
 
     num_axe =
-      actual.products
-      |> Enum.filter(fn p -> p.name == "Axe" end)
-      |> Enum.count()
+      actual
+      |> Cart.get_num_products("Axe")
 
-    total_cost =
-      actual.products
-      |> Enum.map(& &1.price)
-      |> Enum.sum()
-
-    total_tax =
-      (total_cost * cart.tax_rate_percent / 100)
-      |> IO.inspect(label: "total_tax")
-
-    grand_total = total_cost + total_tax
+    total_cost_with_tax =
+      actual
+      |> Cart.get_total_cost_with_tax()
 
     assert num_dove == 2
     assert num_axe == 2
 
-    assert grand_total == 314.96
+    assert total_cost_with_tax == 314.96
   end
 end
