@@ -2,12 +2,12 @@ defmodule CartTest do
   use ExUnit.Case
   doctest Cart
 
-  test "adds five products" do
+  test "step 1: adds five products" do
     # given an empty cart...
     cart = %Cart{}
 
     # and a product...
-    product = %Product{name: "Dove", price: 39.99}
+    product = %Product{name: "Dove Soap", price: 39.99}
 
     # add five products
     actual =
@@ -27,12 +27,12 @@ defmodule CartTest do
     assert total_cost == 199.95
   end
 
-  test "adds five and three products" do
+  test "step 2: adds five and then three products" do
     # given an empty cart...
     cart = %Cart{}
 
     # and a product...
-    product = %Product{name: "Dove", price: 39.99}
+    product = %Product{name: "Dove Soap", price: 39.99}
 
     # add five products
     actual =
@@ -53,13 +53,13 @@ defmodule CartTest do
     assert total_cost == 319.92
   end
 
-  test "adds two different products and calculates tax" do
+  test "step 3: adds two different products and calculates tax" do
     # given an empty cart
     cart = %Cart{}
 
     # and products
-    dove = %Product{name: "Dove", price: 39.99}
-    axe = %Product{name: "Axe", price: 99.99}
+    dove = %Product{name: "Dove Soap", price: 39.99}
+    axe = %Product{name: "Axe Deo", price: 99.99}
 
     # add five products
     actual =
@@ -69,11 +69,11 @@ defmodule CartTest do
 
     num_dove =
       actual
-      |> Cart.get_num_products("Dove")
+      |> Cart.get_num_products("Dove Soap")
 
     num_axe =
       actual
-      |> Cart.get_num_products("Axe")
+      |> Cart.get_num_products("Axe Deo")
 
     total_cost_with_tax =
       actual

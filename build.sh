@@ -1,3 +1,3 @@
 mix deps.get
 mix compile
-mix test
+mix test --trace
