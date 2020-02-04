@@ -1,6 +1,7 @@
 defmodule Cart do
   @moduledoc """
-    Cart: a shopping cart.
+    Cart
+    A shopping cart comprised of a list of Products and a tax rate percentage
   """
 
   defstruct products: [], tax_rate_percent: 12.5
@@ -47,16 +48,13 @@ defmodule Cart do
     (total_cost + total_tax) |> round(2)
   end
 
-  @doc """
-    Adds product to cart
-  """
+  # Adds product to cart
   defp add_product_to_cart(%Cart{products: current_products}, new_product) do
     %Cart{products: current_products ++ [new_product]}
   end
 
-  @doc """
-    Rounds a float to a given number of decimal places
-  """
+  # Rounds a float to a given number of decimal places.
+  # Uses Decimal library for floating point inconsistencies
   defp round(num, places) do
     Decimal.from_float(num) |> Decimal.round(places) |> Decimal.to_float()
   end

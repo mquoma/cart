@@ -3,10 +3,10 @@ defmodule CartTest do
   doctest Cart
 
   test "adds five products" do
-    # given an empty cart
+    # given an empty cart...
     cart = %Cart{}
 
-    # and a product
+    # and a product...
     product = %Product{name: "Dove", price: 39.99}
 
     # add five products
@@ -22,15 +22,16 @@ defmodule CartTest do
       actual
       |> Cart.get_total_cost()
 
+    # verify number of products and total cost
     assert num_products == 5
     assert total_cost == 199.95
   end
 
   test "adds five and three products" do
-    # given an empty cart
+    # given an empty cart...
     cart = %Cart{}
 
-    # and a product
+    # and a product...
     product = %Product{name: "Dove", price: 39.99}
 
     # add five products
@@ -47,6 +48,7 @@ defmodule CartTest do
       actual
       |> Cart.get_total_cost()
 
+    # verify number of products and total cost
     assert num_products == 8
     assert total_cost == 319.92
   end
@@ -77,6 +79,7 @@ defmodule CartTest do
       actual
       |> Cart.get_total_cost_with_tax()
 
+    # verify number of products and total cost with tax
     assert num_dove == 2
     assert num_axe == 2
 
